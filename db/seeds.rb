@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+99.times do
+  title = Faker::LordOfTheRings.character
+  array = []
+  10.times do
+    array << Faker::TwinPeaks.quote
+  end
+  content = array.join " "
+  tag_list = Faker::RockBand.name
+
+  Post.create(title: title,
+              content: content,
+              tag_list: tag_list
+              )
+end

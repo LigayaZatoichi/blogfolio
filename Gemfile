@@ -23,6 +23,10 @@ gem 'coffee-rails', '~> 4.2'
 
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'tinymce-rails'
+gem "recaptcha", require: "recaptcha/rails"
+gem 'acts-as-taggable-on', '~> 4.0'
+gem 'faker', '~> 1.7.3'
 
 
 # Use jquery as the JavaScript library

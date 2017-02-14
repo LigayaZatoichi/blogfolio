@@ -5,7 +5,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    unless params[:search].blank?
+      @posts = Post.tagged_with(params[:search], any: true)
+    else
+      @posts = Post.all
+    end
   end
 
   # GET /posts/1
@@ -71,6 +75,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :tag_list)
     end
 end

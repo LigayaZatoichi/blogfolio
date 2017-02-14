@@ -4,18 +4,28 @@
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
-
+<br/>
+<p>
+<strong>Tags:</strong>
+<% @post.tags.each do |tag| %>
+<%= tag.name  %>
+<% end %>
+</p>
+<br/>
 <p>
   <strong>Content:</strong>
-  <%= @post.content %>
+  <%= @post.content.html_safe %>
 </p>
-
+<br/>
 <p>
   <strong>Comments:</strong>
+  <br/><br/>
   <% @post.comments.each do |comment| %>
     <% unless comment.content.blank? %>
       ID: <%= comment.name %>
+      <br/>
       COMMENT: <%= comment.content %>
+      <br/><br/><br/>
     <% end %>
   <% end %>
 </p>
@@ -30,6 +40,8 @@
 
   <%= f.label :content, "Leave a comment!"  %>
   <%= f.text_area :content %>
+
+  <%= recaptcha_tags %>
 
   <%= f.submit "Submit" %>
 <% end %>
